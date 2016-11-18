@@ -26,7 +26,7 @@
 require_once('../../../config.php');
 
 require_login();
-
+require_once( $CFG->dirroot . '/local/connect/lib.php' );
 require_once($CFG->dirroot . '/local/connect/lib/sco.php');
 
 $scoid = optional_param('dir', null, PARAM_RAW);
