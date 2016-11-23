@@ -42,23 +42,23 @@ if (!isset($scoid) OR !$scoid) {
     }
     echo "<ul class='jqueryFileTree'>";
     foreach ($shortcuts as $sco) {
-        if ($type == 'meeting' AND $sco->type == 'my-meetings') {
+        if ($sco->type == 'my-meetings') {
             cp_one('directory', 'My-Meetings', $sco->sco_id);
         }
-        if ($type == 'meeting' AND $sco->type == 'user-meetings') {
-            cp_one('direcoty', 'User-Meetings', $sco->sco_id);
+        if ($sco->type == 'user-meetings') {
+            cp_one('directory', 'User-Meetings', $sco->sco_id);
         }
-        if ($type == 'meeting' AND $sco->type == 'meetings') {
-            cp_one('direcoty', 'Shared-Meetings', $sco->sco_id);
+        if ($sco->type == 'meetings') {
+            cp_one('directory', 'Shared-Meetings', $sco->sco_id);
         }
-        if ($type == 'content' AND $sco->type == 'my-content') {
-            cp_one('direcoty', 'My-content', $sco->sco_id);
+        if ($sco->type == 'my-content') {
+            cp_one('directory', 'My-content', $sco->sco_id);
         }
-        if ($type == 'content' AND $sco->type == 'user-content') {
-            cp_one('direcoty', 'User-content', $sco->sco_id);
+        if ($sco->type == 'user-content') {
+            cp_one('directory', 'User-content', $sco->sco_id);
         }
-        if ($type == 'content' AND $sco->type == 'content') {
-            cp_one('direcoty', 'Shared-content', $sco->sco_id);
+        if ($sco->type == 'content') {
+            cp_one('directory', 'Shared-content', $sco->sco_id);
         }
     }
     echo "</ul>";
