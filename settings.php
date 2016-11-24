@@ -65,7 +65,7 @@ if ($hassiteconfig && !empty($CFG->connect_service_username) && !empty($CFG->con
     $settings->add($setting);
 
 
-    $setting = new admin_setting_configcheckbox('connect_updatedts', get_string('updatedts', 'local_connect'), get_string('configupdatedts', 'local_connect'), 0);
+    $setting = new admin_setting_configcheckbox('connect_updatedts', get_string('updatedts', 'local_connect'), get_string('configupdatedts', 'local_connect'), 1);
     $setting->set_updatedcallback('connect_update_config');
     $settings->add($setting);
 
