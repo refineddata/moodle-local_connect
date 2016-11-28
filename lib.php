@@ -252,7 +252,7 @@ function local_connect_grade_based_on_range( $userid, $connectid, $startdaterang
     
     $sql = 'SELECT gg.* FROM {grade_grades} gg, {grade_items} gi, {'.$type.'} c
                 WHERE gg.userid = ? AND gg.itemid = gi.id
-                AND gi.itemmodule = "connect" AND gi.iteminstance = c.id
+                AND gi.itemmodule = "' .$type. '" AND gi.iteminstance = c.id
                 AND c.id = ?';
     $grade = $DB->get_record_sql( $sql, array( $userid, $connectid ) ); 
 
