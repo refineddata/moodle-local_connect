@@ -259,7 +259,7 @@ function local_connect_grade_based_on_range( $userid, $connectid, $startdaterang
     //echo "$userid, $connectid, $startdaterange, $enddaterange, $regrade<br />";
 
     // if they have no grade or have on in the range, return true so they'll be graded for the first time or regraded
-    if( ( !$regrade && !$grade ) || ( $grade && $grade->timecreated > $startdaterange && $grade->timecreated < $enddaterange ) ) return true;
+    if( ( !$regrade && !$grade ) || ( $grade && $grade->timecreated > $startdaterange && $grade->timecreated < $enddaterange ) || empty($grade->timecreated)) return true;
     // otherwise, return false, don't grade them
     return false;
 }
