@@ -668,12 +668,12 @@ define(['jquery', 'jqueryui'], function ($, ui) {
                     }else{
                         $("#id_detailgrading").val(0);
                         $("#id_detailgrading").attr("disabled", true);
-                        $("#fgroup_id_tg1").hide();
-                        $("#fgroup_id_tg2").hide();
-                        $("#fgroup_id_tg3").hide();
-                        $("#fgroup_id_tg1vp").hide();
-                        $("#fgroup_id_tg2vp").hide();
-                        $("#fgroup_id_tg3vp").hide();
+                        $('#id_threshold_1').parent().parent().parent().parent().hide();
+                        $('#id_threshold_2').parent().parent().parent().parent().hide();
+                        $('#id_threshold_3').parent().parent().parent().parent().hide();
+                        $('#id_vpthreshold_1').parent().parent().parent().parent().hide();
+                        $('#id_vpthreshold_2').parent().parent().parent().parent().hide();
+                        $('#id_vpthreshold_3').parent().parent().parent().parent().hide();
                     }
                 });
             }
