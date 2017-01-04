@@ -292,16 +292,14 @@ define(['jquery', 'jqueryui'], function ($, ui) {
                 }
                 $("#id_ajax_spin").remove();
                 $('#id_generate').after(' <span id="id_ajax_spin" class="rt-loading-image"></span>');
-                $.ajax({
-                    dataType: "json",
-                    url: window.wwwroot + "/mod/connectmeeting/ajax/ajax.php",
-                    data: {
+                $.post(window.wwwroot + "/mod/connectmeeting/ajax/ajax.php",
+                    {
                         action: "connect_get_sco_by_url",
                         url: connectUrl
                     }
-                }).success(function (data) {
-                    $('#fitem_id_telephony').show();
-                    $('#fitem_id_template').show();
+                , function (data) {
+                    $('#id_telephony').show();
+                    $('#id_template').show();
                     if (data.refined_noauth) {
                         $('#id_url').val('');
                         $('#id_name').val('');
@@ -341,8 +339,8 @@ define(['jquery', 'jqueryui'], function ($, ui) {
                         $('#id_start_hour').val(startDate.getHours());
                         $('#id_start_minute').val(startDate.getMinutes());
                         $('#id_duration').val(data.response.end - data.response.start);
-                        $('#fitem_id_telephony').hide();
-                        $('#fitem_id_template').hide();
+                        $('#id_telephony').hide();
+                        $('#id_template').hide();
                     } else if (data.response == 'denied') {
                         $('#id_url').val('');
                         add_alert('danger', 'Access Denied, you do not have access to this url');
@@ -363,14 +361,13 @@ define(['jquery', 'jqueryui'], function ($, ui) {
                 }
                 $("#id_ajax_spin_name").remove();
                 $('#id_name').after(' <span id="id_ajax_spin_name" class="rt-loading-image"></span>');
-                $.ajax({
-                    dataType: "json",
-                    url: window.wwwroot + "/mod/connectmeeting/ajax/ajax.php",
-                    data: {
+                $.post(
+                    window.wwwroot + "/mod/connectmeeting/ajax/ajax.php",
+                    {
                         action: "connect_get_sco_by_name",
                         name: connectName
                     }
-                }).success(function (data) {
+                , function (data) {
                     if (data.refined_noauth) {
                         $('#id_url').val('');
                         $('#id_name').val('');
@@ -397,7 +394,7 @@ define(['jquery', 'jqueryui'], function ($, ui) {
                 alertmsg += msg;
                 alertmsg += '</div>';
                 alertmsg += '</div>';
-                $('#fgroup_id_urlgrp').after( alertmsg );
+                $('#id_url').parent().parent().parent().parent().after( alertmsg );
                 window.setTimeout(function () {
                     $("#fgroup_id_urlgrp_alert").fadeTo(500, 0).slideUp(500, function () {
                         $(this).remove();
@@ -413,7 +410,7 @@ define(['jquery', 'jqueryui'], function ($, ui) {
                 alertmsg += msg;
                 alertmsg += '</div>';
                 alertmsg += '</div>';
-                $('#fitem_id_name').after( alertmsg );
+                $('#id_name').after( alertmsg );
                 window.setTimeout(function () {
                     $("#name_alert").fadeTo(500, 0).slideUp(500, function () {
                         $(this).remove();
@@ -424,29 +421,29 @@ define(['jquery', 'jqueryui'], function ($, ui) {
             function hideGradingFields() {
                 var value = $('#id_detailgrading').val();
                 if (value == 0) {
-                    $('#fgroup_id_tg1').hide();
-                    $('#fgroup_id_tg2').hide();
-                    $('#fgroup_id_tg3').hide();
+                    $('#id_threshold_1').parent().parent().parent().parent().hide();
+                    $('#id_threshold_2').parent().parent().parent().parent().hide();
+                    $('#id_threshold_3').parent().parent().parent().parent().hide();
 
-                    $('#fgroup_id_tg1vp').hide();
-                    $('#fgroup_id_tg2vp').hide();
-                    $('#fgroup_id_tg3vp').hide();
+                    $('#id_vpthreshold_1').parent().parent().parent().parent().hide();
+                    $('#id_vpthreshold_2').parent().parent().parent().parent().hide();
+                    $('#id_vpthreshold_3').parent().parent().parent().parent().hide();
                 } else if (value == 1) {
-                    $('#fgroup_id_tg1').show();
-                    $('#fgroup_id_tg2').show();
-                    $('#fgroup_id_tg3').show();
+                    $('#id_threshold_1').parent().parent().parent().parent().show();
+                    $('#id_threshold_2').parent().parent().parent().parent().show();
+                    $('#id_threshold_3').parent().parent().parent().parent().show();
 
-                    $('#fgroup_id_tg1vp').hide();
-                    $('#fgroup_id_tg2vp').hide();
-                    $('#fgroup_id_tg3vp').hide();
+                    $('#id_vpthreshold_1').parent().parent().parent().parent().hide();
+                    $('#id_vpthreshold_2').parent().parent().parent().parent().hide();
+                    $('#id_vpthreshold_3').parent().parent().parent().parent().hide();
                 } else if (value == 3) {
-                    $('#fgroup_id_tg1').hide();
-                    $('#fgroup_id_tg2').hide();
-                    $('#fgroup_id_tg3').hide();
+                    $('#id_threshold_1').parent().parent().parent().parent().hide();
+                    $('#id_threshold_2').parent().parent().parent().parent().hide();
+                    $('#id_threshold_3').parent().parent().parent().parent().hide();
 
-                    $('#fgroup_id_tg1vp').show();
-                    $('#fgroup_id_tg2vp').show();
-                    $('#fgroup_id_tg3vp').show();
+                    $('#id_vpthreshold_1').parent().parent().parent().parent().show();
+                    $('#id_vpthreshold_2').parent().parent().parent().parent().show();
+                    $('#id_vpthreshold_3').parent().parent().parent().parent().show();
                 }
             }
 
@@ -601,14 +598,13 @@ define(['jquery', 'jqueryui'], function ($, ui) {
 
                 $("#id_ajax_spin").remove();
                 $('#id_browse').after(' <span id="id_ajax_spin" class="rt-loading-image"></span>');
-                $.ajax({
-                    dataType: "json",
-                    url: window.wwwroot + "/mod/rtrecording/ajax/ajax.php",
-                    data: {
+                $.post(window.wwwroot + "/mod/rtrecording/ajax/ajax.php",
+                    {
+
                         action: "connect_get_sco_by_url",
                         url: connectUrl
                     }
-                }).success(function (data) {
+                , function (data) {
                     if (data.refined_noauth) {
                         $('#id_url').val('');
                         $('#id_name').val('');
@@ -661,14 +657,12 @@ define(['jquery', 'jqueryui'], function ($, ui) {
 
             function checkIfVpRecording( connectUrl ){
                 // check if VP recording or not
-                $.ajax({
-                    dataType: "json",
-                    url: window.wwwroot + "/mod/rtrecording/ajax/ajax.php",
-                    data: {
+                $.post( window.wwwroot + "/mod/rtrecording/ajax/ajax.php",
+                    {
                         action: "connect_check_if_vp_recording",
                         url: connectUrl
                     }
-                }).success(function (data) {
+                , function (data) {
                     if( data.response ){
                         $("#id_detailgrading").attr("disabled", false);
                     }else{
