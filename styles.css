@@ -848,7 +848,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  * Buttons and button-like links
  * see also css3.css
  */
-button,
+/*button,
 input.submit,
 input[type="submit"],
 input[type="button"],
@@ -858,7 +858,8 @@ a.link-as-button {
     color: #FFF;
     padding: 0.3em 0.6em;
     border:1px solid #ccc;
-}
+}*/
+
 .yui-skin-sam .yui-button button,
 .yui-skin-sam .yui-button-hover button,
 .yui-skin-sam .yui-dialog .ft span.default button {
