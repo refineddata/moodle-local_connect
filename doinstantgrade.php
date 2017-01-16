@@ -25,7 +25,7 @@
 require_once('../../config.php');
 require_once($CFG->dirroot.'/course/lib.php');
 global $CFG, $DB;
-
+require_login();
 $courseid = optional_param('courseid', 0, PARAM_INT);
 $section = optional_param('section', 0, PARAM_INT);
 
@@ -78,7 +78,7 @@ if ( $courseid && isset( $CFG->connect_instant_regrade ) AND $CFG->connect_insta
 if ( isset( $CFG->show_instant_regrade_message ) && $CFG->show_instant_regrade_message &&
         isset( $USER->usercourseconnectswithgrade ) && isset( $USER->usercourseconnects ) &&
         $USER->usercourseconnects != $USER->usercourseconnectswithgrade ) {
-    redirect( "$CFG->wwwroot/course/view.php?id=$courseid#section-$section", get_string( 'connect_grades_notyet', 'mod_connect' ), 25 );
+    redirect( "$CFG->wwwroot/course/view.php?id=$courseid#section-$section", get_string( 'connect_grades_notyet', 'mod_connectmeeting' ), 25 );
 } else {
     redirect( "$CFG->wwwroot/course/view.php?id=$courseid#section-$section", '', 0 );
 }
