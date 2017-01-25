@@ -128,23 +128,27 @@ define(['jquery', 'jqueryui'], function ($, ui) {
                     }
                 });
 
-                $('#id_name').keyup(function () {
-                    if ($(this).hasClass('do-not-check')) {
-                        return;
-                    }
-                    var connectName = $(this).val();
-                    delay(function () {
-                        connect_get_sco_by_name(connectName);
-                    }, 3000);
-                });
+                if ($("#id_url").length > 0) {
+                    $('#id_name').keyup(function () {
+                        if ($(this).hasClass('do-not-check')) {
+                            return;
+                        }
+                        var connectName = $(this).val();
+                        delay(function () {
+                            connect_get_sco_by_name(connectName);
+                        }, 3000);
+                    });
+                }
 
-                $("#id_name").blur(function () {
-                    if ($(this).hasClass('do-not-check')) {
-                        return;
-                    }
-                    var connectName = $(this).val();
-                    connect_get_sco_by_name(connectName);
-                });
+                if ($("#id_url").length > 0) {
+                    $("#id_name").blur(function () {
+                        if ($(this).hasClass('do-not-check')) {
+                            return;
+                        }
+                        var connectName = $(this).val();
+                        connect_get_sco_by_name(connectName);
+                    });
+                }
 
                 $('#id_browse').click(function () {
                     var tag = $("<div id='browseurl_window'></div>");
