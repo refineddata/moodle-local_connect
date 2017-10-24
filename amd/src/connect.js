@@ -425,29 +425,14 @@ define(['jquery', 'jqueryui'], function ($, ui) {
             function hideGradingFields() {
                 var value = $('#id_detailgrading').val();
                 if (value == 0) {
-                    $('#id_threshold_1').parent().parent().hide();
-                    $('#id_threshold_2').parent().parent().hide();
-                    $('#id_threshold_3').parent().parent().hide();
-
-                    $('#id_vpthreshold_1').parent().parent().hide();
-                    $('#id_vpthreshold_2').parent().parent().hide();
-                    $('#id_vpthreshold_3').parent().parent().hide();
+                    $('#regular-gradings').hide();
+                    $('#vp-gradings').hide();
                 } else if (value == 1) {
-                    $('#id_threshold_1').parent().parent().show();
-                    $('#id_threshold_2').parent().parent().show();
-                    $('#id_threshold_3').parent().parent().show();
-
-                    $('#id_vpthreshold_1').parent().parent().hide();
-                    $('#id_vpthreshold_2').parent().parent().hide();
-                    $('#id_vpthreshold_3').parent().parent().hide();
+                    $('#regular-gradings').show();
+                    $('#vp-gradings').hide();
                 } else if (value == 3) {
-                    $('#id_threshold_1').parent().parent().hide();
-                    $('#id_threshold_2').parent().parent().hide();
-                    $('#id_threshold_3').parent().parent().hide();
-
-                    $('#id_vpthreshold_1').parent().parent().show();
-                    $('#id_vpthreshold_2').parent().parent().show();
-                    $('#id_vpthreshold_3').parent().parent().show();
+                    $('#regular-gradings').hide();
+                    $('#vp-gradings').show();
                 }
             }
 
@@ -672,12 +657,8 @@ define(['jquery', 'jqueryui'], function ($, ui) {
                     }else{
                         $("#id_detailgrading").val(0);
                         $("#id_detailgrading").attr("disabled", true);
-                        $('#id_threshold_1').parent().parent().parent().parent().hide();
-                        $('#id_threshold_2').parent().parent().parent().parent().hide();
-                        $('#id_threshold_3').parent().parent().parent().parent().hide();
-                        $('#id_vpthreshold_1').parent().parent().parent().parent().hide();
-                        $('#id_vpthreshold_2').parent().parent().parent().parent().hide();
-                        $('#id_vpthreshold_3').parent().parent().parent().parent().hide();
+                        $('#regular-gradings').hide();
+                        $('#vp-gradings').hide();
                     }
                 });
             }
