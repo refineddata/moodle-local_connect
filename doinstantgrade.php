@@ -62,6 +62,17 @@ if ( $courseid && isset( $CFG->connect_instant_regrade ) AND $CFG->connect_insta
             unset( $SESSION->gradescorecache );
         }
     }
+    if ( file_exists( $CFG->dirroot . '/mod/connectslide/lib.php' ) ) {
+        if ( $connectslides = $DB->get_records( 'connectslide', array( 'course' => $courseid ) ) ) {
+            require_once( $CFG->dirroot . '/mod/connectslide/lib.php' );
+            foreach ($connectslides as $connectslide) {
+                connectslide_instant_regrade( $connectslide );
+            }
+            rebuild_course_cache( $courseid );
+            global $SESSION;
+            unset( $SESSION->gradescorecache );
+        }
+    }
     // do recordings as well
     if ( file_exists( $CFG->dirroot . '/mod/rtrecording/lib.php' ) ) {
         if ( $rtrecs = $DB->get_records( 'rtrecording', array( 'course' => $courseid ) ) ) {
