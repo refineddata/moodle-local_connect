@@ -151,11 +151,15 @@ define(['jquery', 'jqueryui'], function ($, ui) {
                 }
 
                 $('#id_browse').click(function () {
+                    var jft = window.wwwroot + '/local/connect/ajax/jqueryFileTree.php';
+                    if (typeof $("#id_browse").data('rtrecording') !== 'undefined') {
+                        jft = window.wwwroot + '/local/connect/ajax/jqueryFileTree_rtrecording.php';
+                    }
                     var tag = $("<div id='browseurl_window'></div>");
 
                     tag.fileTree({
                         // root: '/some/folder/',
-                        script: window.wwwroot + '/local/connect/ajax/jqueryFileTree.php',
+                        script: jft,
                         expandSpeed: 1000,
                         collapseSpeed: 1000,
                         multiFolder: false
