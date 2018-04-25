@@ -69,16 +69,18 @@ if (!isset($scoid) OR !$scoid) {
 } else {
     if ($scoid == 'my-meetings'){
         $scos = array();
-        $mymeetings = connect_mymeetings(false);
-        foreach($mymeetings as $meeting){
-            $sco = new stdClass();
-            $sco->type = 'meeting';
-            $sco->name = $meeting->name;
-            $sco->sco_id = $meeting->sco_id;
-            $sco->icon = 'meeting';
-            $sco->url_path = $meeting->url;
-            $sco->date_end = $meeting->end;
-            $scos[] = $sco;
+        $mymeetings = connect_allmymeetings();
+        if (is_array($mymeetings)) {
+            foreach ($mymeetings as $meeting) {
+                $sco = new stdClass();
+                $sco->type = 'meeting';
+                $sco->name = $meeting->name;
+                $sco->sco_id = $meeting->sco_id;
+                $sco->icon = 'meeting';
+                $sco->url_path = $meeting->url;
+                $sco->date_end = $meeting->end;
+                $scos[] = $sco;
+            }
         }
     } else {
         $scos = connect_get_sco_contents($scoid);

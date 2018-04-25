@@ -45,3 +45,12 @@ function connect_mymeetings( $days, $cache=true ) {
 
     return $meetings;
 }
+
+function connect_allmymeetings() {
+    $connect = _connect_get_instance();
+    $params = array();
+    $meetings = $connect->connect_call('get-all-my-meetings', $params, true);
+
+    return $meetings;
+}
+
